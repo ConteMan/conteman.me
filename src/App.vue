@@ -1,16 +1,15 @@
-<template>
-  <div>Hello World</div>
-  <div>{{ one.content }}</div>
-</template>
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const one = ref({} as any)
-
-const getOne = async() => {
-  one.value = await fetch('/api', {
-    method: 'get',
-  }).then((res: any) => res.json())
-}
-getOne()
+<script setup lang="ts">
+// https://github.com/vueuse/head
+// you can use this to manipulate the document head in any components,
+// they will be rendered correctly in the html results with vite-ssg
+useHead({
+  title: 'ConteWorld',
+  meta: [
+    { name: 'description', content: 'ConteMan Site' },
+  ],
+})
 </script>
+
+<template>
+  <router-view />
+</template>
